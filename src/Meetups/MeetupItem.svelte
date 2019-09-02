@@ -1,4 +1,10 @@
 <script>
+  export let title;
+  export let subtitle;
+  export let imageUrl;
+  export let description;
+  export let address;
+  export let email;
 </script>
 
 <style>
@@ -16,6 +22,11 @@
   }
 
   .image {
+    width: 100%;
+    height: 14rem;
+  }
+
+  .image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
@@ -52,16 +63,18 @@
 
 <article>
   <header>
-    <h1>Title</h1>
-    <h2>Subtitle</h2>
+    <h1>{title}</h1>
+    <h2>{subtitle}</h2>
+    <p>{address}</p>
   </header>
   <div class="image">
-    <img src="" alt="">
+    <img src="{imageUrl}" alt="{title}">
   </div>
   <div class="content">
-    <p></p>
+    <p>{description}</p>
   </div>
   <footer>
+    <a href="mailto:{email}">Contact</a>
     <button>Show Details</button>
     <button>Favorite</button>
   </footer>

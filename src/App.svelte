@@ -8,8 +8,7 @@
       title: 'Coding Meetup',
       subtitle: 'Coding... oh what fun',
       description: 'Come hang out with some really popular coders',
-      imageUrl:
-      'https://pixabay.com/photos/workplace-team-business-meeting-1245776/',
+      imageUrl: 'https://cdn.pixabay.com/photo/2016/03/09/09/22/workplace-1245776_1280.jpg',
       address: '27th Nerd Road, 32523 New Youk',
       contactEmail: 'code@test.com'
     },
@@ -18,7 +17,7 @@
       title: 'Swim Together',
       subtitle: 'Let\'s go for some swimming',
       description: 'We will simply swim some rounds!',
-      imageUrl: 'https://pixabay.com/photos/swimmer-sport-swim-water-crawl-1678307/',
+      imageUrl: 'https://cdn.pixabay.com/photo/2016/09/18/14/21/swimmer-1678307_1280.jpg',
       address: '27th Nerd Road, 32523 New Youk',
       contactEmail: 'swim@test.com'
     },
@@ -35,6 +34,13 @@
 
 <section id="meetups">
   {#each meetups as meetup}
-    <MeetupItem />
+    <MeetupItem
+      title={meetup.title}
+      subtitle={meetup.subtitle}
+      description={meetup.description}
+      imageUrl={meetup.imageUrl}
+      email={meetup.contactEmail}
+      address={meetup.address}
+      />
   {/each}
 </section>
