@@ -30,17 +30,18 @@
 
   let editMode;
 
-  function addMeetup() {
+  function addMeetup(event) {
     const newMeetup = {
       id: Math.random(),
-      title,
-      subtitle,
-      description,
-      address,
-      imageUrl,
-      email
+      title: event.detail.title,
+      subtitle: event.detail.subtitle,
+      description: event.detail.description,
+      address: event.detail.address,
+      imageUrl: event.detail.imageUrl,
+      email: event.detail.email
     }
     meetups = [newMeetup, ...meetups]
+    editMode = null;
   }
 
   function toggleFavorite(event) {
@@ -58,14 +59,20 @@
   main {
     margin-top: 5rem;
   }
+
+  .meetup-controls {
+    margin: 1rem;
+  }
 </style>
 
 <Header />
 
 <main>
-  <Button caption="New Meetup"  on:click={() => editMode = 'add'}/>
+  <div class="meetup-controls">
+    <Button caption="New Meetup"  on:click={() => editMode = 'add'}/>
+  </div>
   {#if editMode === 'add'}
-    <EditMeetup />
+    <EditMeetup on:save={addMeetup} />
   {/if}
   <MeetupGrid
     {meetups}
