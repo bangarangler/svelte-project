@@ -1,4 +1,5 @@
 <script>
+  import { slide } from 'svelte/transition';
 </script>
 
 <style>
@@ -15,6 +16,6 @@
   }
 </style>
 
-<span>
+<span transition:slide>
   <slot />
 </span>
