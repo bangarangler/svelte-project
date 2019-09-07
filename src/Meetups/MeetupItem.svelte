@@ -9,8 +9,8 @@
   export let subtitle;
   export let imageUrl;
   export let description;
-  export let address;
   export let email;
+  export let address;
   export let isFav;
 
   function toggleFavorite() {
@@ -96,7 +96,7 @@
     <p>{description}</p>
   </div>
   <footer>
-    <Button href="mailto:{email}">Contact</Button>
+    <Button mode="outline" type="button" on:click={() => dispatch('edit', id)}>Edit</Button>
     <Button
       mode="outline"
       color={isFav ? null : "success"}
