@@ -14,7 +14,18 @@
   export let isFav;
 
   function toggleFavorite() {
-    meetups.toggleFavorite(id);
+    fetch(`https://svelte-jp.firebaseio.com/meetups/${id}.json`, {
+      method: "PATCH",
+      body: JSON.stringify({isFavorite: !isFav}),
+      headers: { "Content-Type": "application/json" }
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error('Something went wrong!')
+      }
+      meetups.toggleFavorite(id);
+    }).catch(err => {
+      console.log(err)
+    })
   }
 
   const dispatch = createEventDispatcher();

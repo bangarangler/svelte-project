@@ -85,7 +85,16 @@
   }
 
   function deleteMeetup() {
-    meetups.removeMeetup(id)
+    fetch(`https://svelte-jp.firebaseio.com/meetups/${id}.json`, {
+      method: 'DELETE',
+    }).then(res => {
+      if (!res.ok) {
+        throw new Error("Sorry not Deleted!")
+      }
+      meetups.removeMeetup(id)
+    }).catch(err => {
+      console.log(err)
+    })
     dispatch('save')
   }
 </script>
