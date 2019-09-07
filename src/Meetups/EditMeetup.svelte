@@ -1,4 +1,5 @@
 <script>
+  import meetups from './meetups-store.js';
   import { createEventDispatcher } from 'svelte';
   import TextInput from '../UI/TextInput.svelte';
   import Button from '../UI/Button.svelte';
@@ -24,14 +25,16 @@
     descriptionValid && imageUrlValid && emailValid;
 
   function submitForm() {
-    dispatch('save', {
-      title,
-      subtitle,
-      address,
-      email,
-      description,
-      imageUrl
-    })
+    const meetupData = {
+      title: title,
+      subtitle: subtitle,
+      description: description,
+      imageUrl: imageUrl,
+      email: email,
+      address: address
+    }
+    meetups.addMeetup(meetupData);
+    dispatch('save')
   }
 
   function cancel() {
